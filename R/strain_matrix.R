@@ -6,4 +6,4 @@ strain.matrix <- function(a, theta) {
   wynik[2,2]<-(1/a)*cos(theta)
   return(wynik)
 }
-strain.matrix.comp<-cmpfun(f = strain.matrix)
+#strain.matrix.comp<-cmpfun(f = strain.matrix)

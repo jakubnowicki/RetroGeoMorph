@@ -8,7 +8,7 @@ min.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,the
     theta<-theta.vector[((i-1) %% length(a.vector))+1]
     wynik[i,2]<-a
     wynik[i,3]<-theta
-    strain<-strain.matrix.comp(a,theta)
+    strain<-strain.matrix(a,theta)
     tmp<-deformacja(data.1,strain)
     tmp.a<-abind(tmp,data.2, along = 3)
     ifelse(curves[1]==0,yes = (gpg <- gpagen(tmp.a,ShowPlot = F)), no = (gpg <- gpagen(tmp.a,curves = curves,ShowPlot = F)))
