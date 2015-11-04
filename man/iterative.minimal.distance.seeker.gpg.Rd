@@ -35,10 +35,6 @@ iterative.minimal.distance.seeker.gpg(data.1, data.2, a.min = 0.1,
 \item{wydruk}{Print distance}
 }
 \description{
-<<<<<<< HEAD
 Function to find minimal Procrustes distance between two specimens in iterative way with increasing degree of accuracy
-=======
-Function to find minimal Procrustes distance between two specimens
->>>>>>> c7131e2bda398ecbd06253788bc9b207e6145e39
 }
 

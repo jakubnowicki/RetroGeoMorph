@@ -1,10 +1,6 @@
 #' Find minimal distance
 #' 
-<<<<<<< HEAD
 #' Function to find minimal Procrustes distance between two specimens in iterative way with increasing degree of accuracy
-=======
-#' Function to find minimal Procrustes distance between two specimens
->>>>>>> c7131e2bda398ecbd06253788bc9b207e6145e39
 #' @param data.1 First specimen
 #' @param data.2 Second specimen
 #' @param a.min a.min
