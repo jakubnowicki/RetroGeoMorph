@@ -1,4 +1,12 @@
-minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve) {
+#' Create minimal distance matrix
+#' 
+#' Function for generating minimal Procrustes distance matrix from tectonicaly deformed landmark dataset.
+#' @param data Landmark dataset
+#' @param Csize Optional column with centroid size. Defaults to FALSE
+#' @param curve Optional matrix for sliding semilandmarks
+#' @export
+
+minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve=0) {
   cl <- makeCluster(detectCores() - 1)
   registerDoParallel(cl, cores = detectCores() - 1)
   landmarks <- data$coords

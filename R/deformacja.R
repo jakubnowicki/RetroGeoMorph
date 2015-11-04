@@ -4,6 +4,7 @@
 #' 
 #' @param data Landmark data (single specimens matrix)
 #' @param strain.matrix Strain matrix
+#' @export
 
 deformacja <- function(data,strain.matrix) {
   wynik <- strain.matrix %*% t(data)
