@@ -8,4 +8,4 @@ Maintainer: Jakub Nowicki <j.nowicki@student.uw.edu.pl>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 RoxygenNote: 5.0.0
-Imports: shapes, abind, geomorph, dplyr
+Imports: doParallel, shapes, abind, geomorph, dplyr

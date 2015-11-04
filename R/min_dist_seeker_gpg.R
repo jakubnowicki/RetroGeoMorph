@@ -1,3 +1,20 @@
+#' Find minimal distance
+#' 
+#' Function to find minimal Procrustes distance between two specimens
+#' @param data.1 First specimen
+#' @param data.2 Second specimen
+#' @param a.min a.min
+#' @param a.max a.max
+#' @param a.skok a.skok
+#' @param theta.min theta.min
+#' @param theta.max theta.max
+#' @param theta.skok theta.skok
+#' @param iteracje How precize should the search be
+#' @param curves Curve matrix for semilandmarks sliding
+#' @param istotne.cyfry Digit number in comparing distance
+#' @param wydruk Print distance
+#' @export
+
 min.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
   a.vector<-seq(from = a.min,to = a.max,by = a.skok)
   theta.vector<-seq(from = theta.min, to = theta.max, by = theta.skok)
