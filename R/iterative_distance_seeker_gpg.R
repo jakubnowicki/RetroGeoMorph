@@ -20,7 +20,7 @@ iterative.minimal.distance.seeker.gpg <- function(data.1, data.2,a.min=0.1,a.max
   dlugosc.theta<-length(seq(theta.min,theta.max,theta.skok))
   distance<-10000
   for (i in 1:iteracje) {
-    min.dist<-min.dist.seeker.gpg(data.1,data.2,a.min,a.max,a.skok,theta.min,theta.max,theta.skok,curves=curves,wydruk)
+    min.dist<-minimal.dist.seeker.gpg(data.1,data.2,a.min,a.max,a.skok,theta.min,theta.max,theta.skok,curves=curves,wydruk)
     #min.dist <- filter(min.dist,distance!='NA' && distance!='NaN' && distance != 'Inf')
     min.dist.ordered<-min.dist[order(min.dist$distance),]
     a.min<-min(head(min.dist.ordered$a))

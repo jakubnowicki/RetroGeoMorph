@@ -2,8 +2,8 @@ Package: RetroGeoMorph
 Type: Package
 Title: Generating minimal distance matrices from tectonic-deformed landmark
     data.
-Version: 0.01
-Date: 2015-09-30
+Version: 0.02
+Date: 2015-12-01
 Author: Jakub Nowicki
 Maintainer: Jakub Nowicki <j.nowicki@student.uw.edu.pl>
 Description: Package is a tool for creating Procrustes distance matrices from
@@ -13,9 +13,11 @@ Description: Package is a tool for creating Procrustes distance matrices from
     package vegan).
 License: GPL-2
 RoxygenNote: 5.0.1
-Imports:
+Depends:
     doParallel,
     shapes,
     abind,
     geomorph,
-    dplyr
+    dplyr,
+    morphoutils
+Remotes: jakubnowicki/morphoutils

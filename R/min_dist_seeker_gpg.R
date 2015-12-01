@@ -9,15 +9,14 @@
 #' @param theta.min theta.min
 #' @param theta.max theta.max
 #' @param theta.skok theta.skok
-#' @param iteracje How precize should the search be
 #' @param curves Curve matrix for semilandmarks sliding
-#' @param istotne.cyfry Digit number in comparing distance
 #' @param wydruk Print distance
 #' @export
 #' @import geomorph
 #' @import abind
+#' @import morphoutils
 
-min.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
+minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
   a.vector<-seq(from = a.min,to = a.max,by = a.skok)
   theta.vector<-seq(from = theta.min, to = theta.max, by = theta.skok)
   n.kombinacji <- length(a.vector)*length(theta.vector)

@@ -16,7 +16,7 @@ minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve=0) {
   pairs<-combn(c(1:n),2)
   n.pairs<-dim(pairs)[2]
   wynik<-NULL
-  wynik =  foreach(i=1:n.pairs,.export = c('fpdist','iterative.minimal.distance.seeker.gpg','min.dist.seeker.gpg','strain.matrix','deformacja'),.packages = c('shapes','abind','geomorph','dplyr')) %dopar% {
+  wynik =  foreach(i=1:n.pairs,.export = c('fpdist','iterative.minimal.distance.seeker.gpg','minimal.dist.seeker.gpg','strain.matrix','deformacja'),.packages = c('shapes','abind','geomorph','dplyr')) %dopar% {
     wynik[i]<-iterative.minimal.distance.seeker.gpg(data.1=landmarks[,,pairs[1,i]],data.2=landmarks[,,pairs[2,i]],curves = curve,wydruk=F)[,1]
   }
   stopCluster(cl)
