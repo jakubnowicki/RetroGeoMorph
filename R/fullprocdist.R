@@ -5,6 +5,7 @@
 #' @param y Object 2
 #' @param reflect reflect
 #' @export
+#' @import shapes
 
 fpdist<-function(x, y, reflect = FALSE){
   sin(riemdist(x,y,reflect=reflect))

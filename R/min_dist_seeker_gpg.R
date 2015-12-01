@@ -14,6 +14,8 @@
 #' @param istotne.cyfry Digit number in comparing distance
 #' @param wydruk Print distance
 #' @export
+#' @import geomorph
+#' @import abind
 
 min.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
   a.vector<-seq(from = a.min,to = a.max,by = a.skok)
@@ -27,7 +29,7 @@ min.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,the
     wynik[i,3]<-theta
     strain<-strain.matrix(a,theta)
     tmp<-deformacja(data.1,strain)
-    tmp.a<-abind(tmp,data.2, along = 3)
+    tmp.a<-abind::abind(tmp,data.2, along = 3)
     ifelse(curves[1]==0,yes = (gpg <- gpagen(tmp.a,ShowPlot = F)), no = (gpg <- gpagen(tmp.a,curves = curves,ShowPlot = F)))
     wynik[i,1]<-fpdist(gpg$coords[,,1],gpg$coords[,,2])
   }

@@ -5,6 +5,7 @@
 #' @param Csize Optional column with centroid size. Defaults to FALSE
 #' @param curve Optional matrix for sliding semilandmarks
 #' @export
+#' @import doParallel
 
 minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve=0) {
   cl <- makeCluster(detectCores() - 1)
