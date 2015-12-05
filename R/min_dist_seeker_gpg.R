@@ -13,7 +13,6 @@
 #' @param wydruk Print distance
 #' @export
 #' @import geomorph
-#' @import abind
 #' @import morphoutils
 
 minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
@@ -21,6 +20,7 @@ minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1
   theta.vector<-seq(from = theta.min, to = theta.max, by = theta.skok)
   n.kombinacji <- length(a.vector)*length(theta.vector)
   wynik<-matrix(0,ncol=3,nrow=n.kombinacji)
+  n.land <- dim(data.1)[1]
   for (i  in 1:n.kombinacji) {
     a<-a.vector[((i-1) %/% length(theta.vector))+1]
     theta<-theta.vector[((i-1) %% length(a.vector))+1]
@@ -28,7 +28,7 @@ minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1
     wynik[i,3]<-theta
     strain<-strain.matrix(a,theta)
     tmp<-deformacja(data.1,strain)
-    tmp.a<-abind::abind(tmp,data.2, along = 3)
+    tmp.a<-array(data = c(tmp,data.2), dim = c(n.land,2,3))
     ifelse(curves[1]==0,yes = (gpg <- gpagen(tmp.a,ShowPlot = F)), no = (gpg <- gpagen(tmp.a,curves = curves,ShowPlot = F)))
     wynik[i,1]<-fpdist(gpg$coords[,,1],gpg$coords[,,2])
   }
