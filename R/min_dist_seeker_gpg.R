@@ -15,21 +15,27 @@
 #' @import geomorph
 #' @import morphoutils
 
-minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,theta.skok=0.1,curves=0,wydruk=T) {
+minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,
+                                    theta.skok=0.1,curves=NULL,wydruk=T) {
   a.vector<-seq(from = a.min,to = a.max,by = a.skok)
-  theta.vector<-seq(from = theta.min, to = theta.max, by = theta.skok)
+  if (theta.skok != 0) {
+    theta.vector<-seq(from = theta.min, to = theta.max, by = theta.skok)
+  } else {
+      theta.vector <- 0
+  }
   n.kombinacji <- length(a.vector)*length(theta.vector)
   wynik<-matrix(0,ncol=3,nrow=n.kombinacji)
   n.land <- dim(data.1)[1]
+  params <- expand.grid(a.vector,theta.vector)
   for (i  in 1:n.kombinacji) {
-    a<-a.vector[((i-1) %/% length(theta.vector))+1]
-    theta<-theta.vector[((i-1) %% length(a.vector))+1]
+    a<-params[i,1]
+    theta<-params[i,2]
     wynik[i,2]<-a
     wynik[i,3]<-theta
     strain<-strain.matrix(a,theta)
     tmp<-deformacja(data.1,strain)
     tmp.a<-array(data = c(tmp,data.2), dim = c(n.land,2,3))
-    ifelse(curves[1]==0,yes = (gpg <- gpagen(tmp.a,ShowPlot = F)), no = (gpg <- gpagen(tmp.a,curves = curves,ShowPlot = F)))
+    gpg <- gpagen(tmp.a,curves = curves)
     wynik[i,1]<-fpdist(gpg$coords[,,1],gpg$coords[,,2])
   }
   wynik.df<-as.data.frame(wynik)

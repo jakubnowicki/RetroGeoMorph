@@ -4,7 +4,9 @@
 \alias{minimal.distance.matrix.iter.half}
 \title{Create minimal distance matrix}
 \usage{
-minimal.distance.matrix.iter.half(data, Csize = FALSE, curve = 0)
+minimal.distance.matrix.iter.half(data, Csize = FALSE, curve = NULL,
+  a.min = 0.1, a.max = 1.9, a.skok = 0.1, theta.min = -0.9,
+  theta.max = 0.9, theta.skok = 0.1, iteracje = 10, istotne.cyfry = 10)
 }
 \arguments{
 \item{data}{Landmark dataset}
@@ -12,6 +14,22 @@ minimal.distance.matrix.iter.half(data, Csize = FALSE, curve = 0)
 \item{Csize}{Optional column with centroid size. Defaults to FALSE}
 
 \item{curve}{Optional matrix for sliding semilandmarks}
+
+\item{a.min}{a.min}
+
+\item{a.max}{a.max}
+
+\item{a.skok}{a.skok}
+
+\item{theta.min}{theta.min}
+
+\item{theta.max}{theta.max}
+
+\item{theta.skok}{theta.skok}
+
+\item{iteracje}{How precize should the search be}
+
+\item{istotne.cyfry}{Digit number in comparing distance}
 }
 \description{
 Function for generating minimal Procrustes distance matrix from tectonicaly deformed landmark dataset.

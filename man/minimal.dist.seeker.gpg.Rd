@@ -6,7 +6,7 @@
 \usage{
 minimal.dist.seeker.gpg(data.1, data.2, a.min = 0.1, a.max = 1.9,
   a.skok = 0.1, theta.min = -0.9, theta.max = 0.9, theta.skok = 0.1,
-  curves = 0, wydruk = T)
+  curves = NULL, wydruk = T)
 }
 \arguments{
 \item{data.1}{First specimen}
