@@ -19,7 +19,11 @@ iterative.minimal.distance.seeker.gpg <- function(data.1, data.2,a.min=0.1,a.max
                                                   theta.max=0.9,theta.skok=0.1, iteracje=10,curves=NULL,
                                                   istotne.cyfry=10,wydruk=T) {
   dlugosc.a<-length(seq(a.min,a.max,a.skok))
-  dlugosc.theta<-length(seq(theta.min,theta.max,theta.skok))
+  if (theta.skok != 0) {
+      dlugosc.theta<-length(seq(theta.min,theta.max,theta.skok))
+  } else {
+      dlugosc.theta <- 0
+  }
   distance<-10000
   for (i in 1:iteracje) {
     min.dist<-minimal.dist.seeker.gpg(data.1,data.2,a.min,a.max,a.skok,theta.min,theta.max,theta.skok,
