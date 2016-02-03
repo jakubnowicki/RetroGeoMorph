@@ -23,6 +23,7 @@ iterative.minimal.distance <- function(data.1, data.2,a.min=0.1,a.max=1.9,a.skok
         dlugosc.theta<-length(seq(theta.min,theta.max,theta.skok))
     } else {
         dlugosc.theta <- 0
+        theta.min <- 0
     }
     distance<-10000
     if (theta.skok != 0) {

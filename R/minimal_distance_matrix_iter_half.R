@@ -24,24 +24,42 @@ minimal.distance.matrix <- function(data, Csize=FALSE,curve=NULL,a.min=0.1,a.max
   n<-dim(landmarks)[3]
   pairs<-combn(1:n,2)
   n.pairs<-dim(pairs)[2]
-  wynik<-NULL
+  wynik<-list()
   wynik =  foreach(i=1:n.pairs,.export = c('iterative.minimal.distance','minimal.distance'),
                    .packages = c('shapes','geomorph','dplyr','morphoutils')) %dopar% {
-    wynik[i]<-iterative.minimal.distance.seeker.gpg(data.1=landmarks[,,pairs[1,i]],data.2=landmarks[,,pairs[2,i]],
+    wynik[i]<-iterative.minimal.distance(data.1=landmarks[,,pairs[1,i]],data.2=landmarks[,,pairs[2,i]],
                                                     curves = curve,wydruk=F,a.min=a.min,a.max=a.max,a.skok=a.skok,
                                                     theta.min=theta.min,theta.max=theta.max,theta.skok=theta.skok,
-                                                    istotne.cyfry=istotne.cyfry,iteracje=iteracje)[,1]
+                                                    istotne.cyfry=istotne.cyfry,iteracje=iteracje)
   }
   stopCluster(cl)
-  wynik<-unlist(wynik)
+  wynik.dist <-sapply(wynik,"[[",1)
   wynik.m <- matrix(0,ncol=n,nrow=n)
   for (i in 1:n.pairs) {
-    wynik.m[pairs[1,i],pairs[2,i]]<-wynik[i]
-    wynik.m[pairs[2,i],pairs[1,i]]<-wynik[i]
+    wynik.m[pairs[1,i],pairs[2,i]]<-wynik.dist[i]
+    wynik.m[pairs[2,i],pairs[1,i]]<-wynik.dist[i]
   }
   wynik.df<-as.data.frame(wynik.m)
   colnames(wynik.df)<-attr(landmarks,which = 'dimnames')[[3]]
   rownames(wynik.df)<-attr(landmarks,which = 'dimnames')[[3]]
+  wynik.a <-sapply(wynik,"[[",2)
+  wynik.am <- matrix(0,ncol=n,nrow=n)
+  for (i in 1:n.pairs) {
+      wynik.am[pairs[1,i],pairs[2,i]]<-wynik.a[i]
+      wynik.am[pairs[2,i],pairs[1,i]]<-wynik.a[i]
+  }
+  wynik.a<-as.data.frame(wynik.am)
+  colnames(wynik.a)<-attr(landmarks,which = 'dimnames')[[3]]
+  rownames(wynik.a)<-attr(landmarks,which = 'dimnames')[[3]]
+  wynik.t <-sapply(wynik,"[[",3)
+  wynik.tm <- matrix(0,ncol=n,nrow=n)
+  for (i in 1:n.pairs) {
+      wynik.tm[pairs[1,i],pairs[2,i]]<-wynik.t[i]
+      wynik.tm[pairs[2,i],pairs[1,i]]<-wynik.t[i]
+  }
+  wynik.t<-as.data.frame(wynik.tm)
+  colnames(wynik.t)<-attr(landmarks,which = 'dimnames')[[3]]
+  rownames(wynik.t)<-attr(landmarks,which = 'dimnames')[[3]]
   if (Csize==TRUE) wynik.df$size<-size
-  return(wynik.df)
+  return(list(distance = wynik.df, a = wynik.a, theta = wynik.t))
 }
