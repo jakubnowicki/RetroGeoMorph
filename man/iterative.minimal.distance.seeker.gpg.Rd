@@ -6,7 +6,7 @@
 \usage{
 iterative.minimal.distance.seeker.gpg(data.1, data.2, a.min = 0.1,
   a.max = 1.9, a.skok = 0.1, theta.min = -0.9, theta.max = 0.9,
-  theta.skok = 0.1, iteracje = 10, curves = 0, istotne.cyfry = 10,
+  theta.skok = 0.1, iteracje = 10, curves = NULL, istotne.cyfry = 10,
   wydruk = T)
 }
 \arguments{
