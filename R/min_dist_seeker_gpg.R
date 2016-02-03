@@ -15,7 +15,7 @@
 #' @import geomorph
 #' @import morphoutils
 
-minimal.dist.seeker.gpg <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,
+minimal.distance <- function(data.1,data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,theta.max=0.9,
                                     theta.skok=0.1,curves=NULL,wydruk=T) {
   a.vector<-seq(from = a.min,to = a.max,by = a.skok)
   if (theta.skok != 0) {

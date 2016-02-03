@@ -15,7 +15,7 @@
 #' @export
 #' @import doParallel
 
-minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve=NULL,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,
+minimal.distance.matrix <- function(data, Csize=FALSE,curve=NULL,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,
                                               theta.max=0.9,theta.skok=0.1, iteracje=10,istotne.cyfry=10) {
   cl <- makeCluster(detectCores() - 1)
   registerDoParallel(cl, cores = detectCores() - 1)
@@ -25,7 +25,7 @@ minimal.distance.matrix.iter.half <- function(data, Csize=FALSE,curve=NULL,a.min
   pairs<-combn(1:n,2)
   n.pairs<-dim(pairs)[2]
   wynik<-NULL
-  wynik =  foreach(i=1:n.pairs,.export = c('iterative.minimal.distance.seeker.gpg','minimal.dist.seeker.gpg'),
+  wynik =  foreach(i=1:n.pairs,.export = c('iterative.minimal.distance','minimal.distance'),
                    .packages = c('shapes','geomorph','dplyr','morphoutils')) %dopar% {
     wynik[i]<-iterative.minimal.distance.seeker.gpg(data.1=landmarks[,,pairs[1,i]],data.2=landmarks[,,pairs[2,i]],
                                                     curves = curve,wydruk=F,a.min=a.min,a.max=a.max,a.skok=a.skok,
