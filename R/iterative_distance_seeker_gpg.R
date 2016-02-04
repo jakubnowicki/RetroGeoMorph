@@ -13,11 +13,12 @@
 #' @param curves Curve matrix for semilandmarks sliding
 #' @param istotne.cyfry Digit number in comparing distance
 #' @param wydruk Print distance
+#' @param distance distance type ('full' or 'procrustes')
 #' @export
 
 iterative.minimal.distance <- function(data.1, data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,
                                                   theta.max=0.9,theta.skok=0.1, iteracje=10,curves=NULL,
-                                                  istotne.cyfry=10,wydruk=T) {
+                                                  istotne.cyfry=10,wydruk=T, dist = 'full') {
     dlugosc.a<-length(seq(a.min,a.max,a.skok))
     if (theta.skok != 0) {
         dlugosc.theta<-length(seq(theta.min,theta.max,theta.skok))
@@ -29,7 +30,7 @@ iterative.minimal.distance <- function(data.1, data.2,a.min=0.1,a.max=1.9,a.skok
     if (theta.skok != 0) {
         for (i in 1:iteracje) {
             min.dist<-minimal.distance(data.1,data.2,a.min,a.max,a.skok,theta.min,theta.max,theta.skok,
-                                              curves=curves,wydruk)
+                                              curves=curves,wydruk, distance = dist)
             min.dist.ordered<-min.dist[order(min.dist$distance),]
             ifelse((round(distance,digits = istotne.cyfry) == round(min.dist.ordered[1,1], digits = istotne.cyfry)),
                    break,distance<-min.dist.ordered[1,])
@@ -43,7 +44,7 @@ iterative.minimal.distance <- function(data.1, data.2,a.min=0.1,a.max=1.9,a.skok
     } else {
         for (i in 1:iteracje) {
             min.dist<-minimal.distance(data.1,data.2,a.min,a.max,a.skok,theta.min,theta.max,theta.skok,
-                                              curves=curves,wydruk)
+                                              curves=curves,wydruk, distance = dist)
             min.dist.ordered<-min.dist[order(min.dist$distance),]
             ifelse((round(distance,digits = istotne.cyfry) == round(min.dist.ordered[1,1], digits = istotne.cyfry)),break,
                    distance<-min.dist.ordered[1,])

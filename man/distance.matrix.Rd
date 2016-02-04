@@ -4,12 +4,14 @@
 \alias{distance.matrix}
 \title{Procrustes Distance Matrix}
 \usage{
-distance.matrix(data, Csize = FALSE)
+distance.matrix(data, Csize = FALSE, distance = "full")
 }
 \arguments{
 \item{data}{data}
 
 \item{Csize}{optional addition of column with centroid size}
+
+\item{distance}{distance type ('full' or 'procrustes')}
 }
 \description{
 Creates Procrustes Distance matrix from landmark data.

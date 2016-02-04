@@ -6,7 +6,8 @@
 \usage{
 minimal.distance.matrix(data, Csize = FALSE, curve = NULL, a.min = 0.1,
   a.max = 1.9, a.skok = 0.1, theta.min = -0.9, theta.max = 0.9,
-  theta.skok = 0.1, iteracje = 10, istotne.cyfry = 10)
+  theta.skok = 0.1, iteracje = 10, istotne.cyfry = 10,
+  distance = "full")
 }
 \arguments{
 \item{data}{Landmark dataset}
@@ -30,6 +31,8 @@ minimal.distance.matrix(data, Csize = FALSE, curve = NULL, a.min = 0.1,
 \item{iteracje}{How precize should the search be}
 
 \item{istotne.cyfry}{Digit number in comparing distance}
+
+\item{distance}{distance type ('full' or 'procrustes')}
 }
 \description{
 Function for generating minimal Procrustes distance matrix from tectonicaly deformed landmark dataset.

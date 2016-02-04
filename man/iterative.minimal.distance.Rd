@@ -6,7 +6,8 @@
 \usage{
 iterative.minimal.distance(data.1, data.2, a.min = 0.1, a.max = 1.9,
   a.skok = 0.1, theta.min = -0.9, theta.max = 0.9, theta.skok = 0.1,
-  iteracje = 10, curves = NULL, istotne.cyfry = 10, wydruk = T)
+  iteracje = 10, curves = NULL, istotne.cyfry = 10, wydruk = T,
+  dist = "full")
 }
 \arguments{
 \item{data.1}{First specimen}
@@ -32,6 +33,8 @@ iterative.minimal.distance(data.1, data.2, a.min = 0.1, a.max = 1.9,
 \item{istotne.cyfry}{Digit number in comparing distance}
 
 \item{wydruk}{Print distance}
+
+\item{distance}{distance type ('full' or 'procrustes')}
 }
 \description{
 Function to find minimal Procrustes distance between two specimens in iterative way with increasing degree of accuracy

@@ -6,7 +6,7 @@
 \usage{
 minimal.distance(data.1, data.2, a.min = 0.1, a.max = 1.9, a.skok = 0.1,
   theta.min = -0.9, theta.max = 0.9, theta.skok = 0.1, curves = NULL,
-  wydruk = T)
+  wydruk = T, distance = "full")
 }
 \arguments{
 \item{data.1}{First specimen}
@@ -28,6 +28,8 @@ minimal.distance(data.1, data.2, a.min = 0.1, a.max = 1.9, a.skok = 0.1,
 \item{curves}{Curve matrix for semilandmarks sliding}
 
 \item{wydruk}{Print distance}
+
+\item{distance}{distance type ('full' or 'procrustes')}
 }
 \description{
 Function to find minimal Procrustes distance between two specimens
