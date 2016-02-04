@@ -13,7 +13,7 @@
 #' @param curves Curve matrix for semilandmarks sliding
 #' @param istotne.cyfry Digit number in comparing distance
 #' @param wydruk Print distance
-#' @param distance distance type ('full' or 'procrustes')
+#' @param dist distance type ('full' or 'procrustes')
 #' @export
 
 iterative.minimal.distance <- function(data.1, data.2,a.min=0.1,a.max=1.9,a.skok=0.1,theta.min=-0.9,

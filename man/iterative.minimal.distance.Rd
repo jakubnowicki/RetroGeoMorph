@@ -34,7 +34,7 @@ iterative.minimal.distance(data.1, data.2, a.min = 0.1, a.max = 1.9,
 
 \item{wydruk}{Print distance}
 
-\item{distance}{distance type ('full' or 'procrustes')}
+\item{dist}{distance type ('full' or 'procrustes')}
 }
 \description{
 Function to find minimal Procrustes distance between two specimens in iterative way with increasing degree of accuracy
